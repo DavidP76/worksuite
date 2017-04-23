@@ -8,5 +8,5 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.3.0), logging
-URL: https://github.com/DavidP76/worksuite
+URL: http://github.com/DavidP76/worksuite
 BugReports: https://github.com/DavidP76/worksuite/issues
