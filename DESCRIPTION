@@ -2,11 +2,11 @@ Package: worksuite
 Type: Package
 Title: DP Worksuite
 Version: 0.1.0
-Author: David E Phillips
-Maintainer: David Phillips <davidephillips11@gmail.com>
+Authors@R: person("David", "Phillips", role = c("aut", "cre"))
 Description: More about what it does (maybe more than one line)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.3.0), logging
-URL: http://github.com/DavidP76/worksuite
+URL: https://github.com/DavidP76/worksuite
+BugReports: https://github.com/DavidP76/worksuite/issues
