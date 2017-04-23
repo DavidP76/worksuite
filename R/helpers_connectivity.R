@@ -1,7 +1,7 @@
 ## helpers_connectivity.R
 ## Set of helper functions to address issues around internet connectivity and server connectivity
 
-hasIP <- function() {
+hasIP = function() {
   ## Tests to ensure whether internet connection is established (based on having valid IP address)
   ## Returns TRUE if internet connection, FALSE if no internet connection
   ## From <https://stackoverflow.com/questions/5076593/how-to-determine-if-you-have-an-internet-connection-in-r>
