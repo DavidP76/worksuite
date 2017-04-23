@@ -3,10 +3,11 @@ Type: Package
 Title: DP Worksuite
 Version: 0.1.0
 Authors@R: person("David", "Phillips", email = "davidephillips11@gmail.com", role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
+Description: Set of tools to facilitate repeated business intelligence processes.
+    Focus is on process logging, data management/cleaning, and output generation
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.3.0), logging
+Depends: R (>= 3.0.0), logging (>= 0.7-103), devtools (>= 1.12.0)
 URL: http://github.com/DavidP76/worksuite
 BugReports: https://github.com/DavidP76/worksuite/issues
