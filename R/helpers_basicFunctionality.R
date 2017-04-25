@@ -1,7 +1,7 @@
 ## helpers_basicFunctionality
 ## Functions for simple but commonplace manipulations
 
-clean.values = function(x                           # target input
+clean_values = function(x                           # target input
                         ,toClass = NULL             # reclass the vector
                         ,delNames = NULL            # remove names from vector
                         ,tableCols = NULL           # column names for table params

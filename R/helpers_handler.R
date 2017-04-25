@@ -20,3 +20,7 @@ localize <- function() {
 
   invisible(result)
 }
+
+install_packages <- function(pkg, github = ifelse(pkg == "worksuite", TRUE, FALSE)) {
+  browser()
+}
