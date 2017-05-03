@@ -3,6 +3,7 @@
 
 localize <- function() {
   ## Provides paths to common file locations, depending on computer and account
+  
   result = list()
 
   ## Check that computer and account is in a known set
@@ -21,6 +22,33 @@ localize <- function() {
   invisible(result)
 }
 
-install_packages <- function(pkg, github = ifelse(pkg == "worksuite", TRUE, FALSE)) {
-  browser()
+load_package <- function(pkg
+                         ,github.repos =               ## Name of the GitHub repository (NULL if CRAN package)
+                           ifelse(pkg == "worksuite", "DavidP76", NULL)) {
+  ## Load the given package (update to most recent if GitHub repository)
+  
+  result = FALSE
+  if(is.null(github.repos)) {
+    if(!(pkg %in% installed.packages()[,"Package"])) {
+      ## Package hasn't been installed, and needs to be installed
+      message(paste("Installing package '", pkg, "'", sep = ""))
+      suppressMessages(suppressWarnings(install.packages(pkg, verbose = FALSE, quiet = TRUE)))
+    }
+    ## Load the package
+    result = suppressWarnings(suppressMessages(require(pkg)))
+  }
+  
+  else {
+    ## Load the 'devtools' package (required functionality for installing packages from GitHub)
+    load_package("devtools")
+    repos.pkg = paste(github.repos, pkg, sep = "/")
+    ## Install the package
+    suppressWarnings(suppressMessages(install_github(repos.pkg)))
+    ## Load the package
+    result = suppressWarnings(suppressMessages(require(pkg)))
+  }
+  
+  ## Stop the process if not successful
+  if(!result) stop(paste("'", pkg, "' package not installed correctly"))
+  
 }
