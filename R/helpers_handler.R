@@ -26,7 +26,7 @@ load_package <- function(pkg
                          ,github.repos =               ## Name of the GitHub repository (NULL if CRAN package)
                            ifelse(pkg == "worksuite", "DavidP76", NULL)) {
   ## Load the given package (update to most recent if GitHub repository)
-  
+  browser()
   result = FALSE
   if(is.null(github.repos)) {
     if(!(pkg %in% installed.packages()[,"Package"])) {
