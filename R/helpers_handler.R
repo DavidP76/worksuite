@@ -22,9 +22,7 @@ localize <- function() {
   invisible(result)
 }
 
-load_package <- function(pkg
-                         ,github.repos =               ## Name of the GitHub repository (NULL if CRAN package)
-                           ifelse(pkg == "worksuite", "DavidP76", NULL)) {
+load_package <- function(pkg, github.repos = NULL) {
   ## Load the given package (update to most recent if GitHub repository)
   result = FALSE
   if(is.null(github.repos)) {
