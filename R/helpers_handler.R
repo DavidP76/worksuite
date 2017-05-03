@@ -40,7 +40,7 @@ load_package <- function(pkg, github.repos = NULL) {
     load_package("devtools")
     repos.pkg = paste(github.repos, pkg, sep = "/")
     ## Install the package
-    suppressWarnings(suppressMessages(install_github(repos.pkg)))
+    suppressWarnings(suppressMessages(install_github(repos.pkg, quiet = TRUE)))
     ## Load the package
     result = suppressWarnings(suppressMessages(require(pkg, character.only = TRUE)))
   }
