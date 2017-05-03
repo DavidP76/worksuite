@@ -32,7 +32,7 @@ load_package <- function(pkg, github.repos = NULL) {
       suppressMessages(suppressWarnings(install.packages(pkg, verbose = FALSE, quiet = TRUE)))
     }
     ## Load the package
-    result = suppressWarnings(suppressMessages(require(pkg)))
+    result = suppressWarnings(suppressMessages(require(pkg, character.only = TRUE)))
   }
   
   else {
@@ -42,10 +42,10 @@ load_package <- function(pkg, github.repos = NULL) {
     ## Install the package
     suppressWarnings(suppressMessages(install_github(repos.pkg)))
     ## Load the package
-    result = suppressWarnings(suppressMessages(require(pkg)))
+    result = suppressWarnings(suppressMessages(require(pkg, character.only = TRUE)))
   }
   
   ## Stop the process if not successful
-  if(!result) stop(paste("'", pkg, "' package not installed correctly"))
+  if(!result) stop(paste("'", pkg, "' package not installed correctly", sep = ""))
   
 }
