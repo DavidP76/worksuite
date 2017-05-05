@@ -27,7 +27,7 @@ clean_values = function(x                           # target input
     if(toClass == "numeric") result = as.numeric(result)
   }
 
-  if(input.class == "table") {
+  else if(input.class == "table") {
     ## toClass - by default: convert to freq table
     if(is.null(toClass)) toClass = "data.frame"
     stopifnot(toClass %in% c("table", "data.frame", "integer"))
