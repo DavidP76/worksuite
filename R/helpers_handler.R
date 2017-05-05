@@ -7,28 +7,33 @@ localize <- function(tag = NULL) {
   result = list()
 
   ## Check that computer and account is in a known set
-  known.accounts = data.frame(computer.name = character(0)
-                              ,account.name = character(0))
-  known.accounts = rbind(known.accounts
-                         ,data.frame(computer.name = "ELSPHIL-7006805"     , account.name = "PHILLIPSD")     ## DP Elsevier Dell
-                         ,data.frame(computer.name = "DESKTOP-12K9V71"     , account.name = "LEIGHD")        ## LD Personal ASUS
+  known.accounts = rbind(data.frame(computer.name = "ELSPHIL-7006805" , account.name = "PHILLIPSD")     ## DP Elsevier Dell
+                         ,data.frame(computer.name = "DESKTOP-12K9V71", account.name = "LEIGHD")        ## LD Personal ASUS
   )
   
   computer.name = toupper(clean_values(Sys.info()["nodename"]))
   account.name = toupper(clean_values(Sys.info()["user"]))
   
-  browser()
-  if(computer.name %in% c("ELSPHIL-7006805"               ## DP Elsevier Dell
-                          ,"DESKTOP-12K9V71"              ## LD Personal ASUS
-  ) == FALSE) stop("Unable to localize: unknown computer/account")
-
-  ## Define localized parameters depending on the computer and user account
-  if(computer.name == "DESKTOP-12K9V71" & account.name == "LEIGHD") {
-    result[["computer.name"]] = computer.name
-    result[["account.name"]] = account.name
+  if(!any(account.name == known.accounts$account.name & computer.name == known.accounts$computer.name)) {
+    stop("Unable to localize: unknown computer/account")
   }
 
-  invisible(result)
+  ## Load parameter files located on target machines
+  ## These files must be saved as CSV, with first row as {Field Name, Field Tyoe, Field Value}
+  ## Fields that contain filenames should be of the format "C:/EXAMPLE.csv" to refer to an absolute path or "./EXAMPLE.csv" for a path relative to the parameter file
+  
+  parameter.files = rbind(
+    data.frame(computer.name = "DESKTOP-12K9V71", account.name = "LEIGHD", file.name = "Parameters.csv", file.path = "C:\Users\leighd\Documents\David Sabbatical\R Projects")
+  )
+ 
+  load.parameter.files = function(locs) {
+    browser()
+  } 
+  
+  results = load.parameter.files(parameter.files[parameter.files$computer.name == computer.name
+                                                 & account.files$computer.name == account.name,])
+  
+  browser()
 }
 
 load_package <- function(pkg, github.repos = NULL) {
