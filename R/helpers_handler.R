@@ -31,7 +31,7 @@ localize <- function(tag = NULL) {
   } 
   
   results = load.parameter.files(parameter.files[parameter.files$computer.name == computer.name
-                                                 & account.files$computer.name == account.name,])
+                                                 & parameter.files$account.name == account.name,])
   
   browser()
 }
