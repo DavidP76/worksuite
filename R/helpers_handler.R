@@ -2,10 +2,10 @@
 ## Scripts for handling common scripting challenges
 
 localize <- function(tag = NULL) {
-  ## Provides paths to common file locations, depending on computer and account
+  ## Provides parameter information, depending on computer and account
   
   result = list()
-
+  
   ## Check that computer and account is in a known set
   known.accounts = rbind(data.frame(computer.name = "ELSPHIL-7006805" , account.name = "PHILLIPSD")     ## DP Elsevier Dell
                          ,data.frame(computer.name = "DESKTOP-12K9V71", account.name = "LEIGHD")        ## LD Personal ASUS
@@ -17,7 +17,7 @@ localize <- function(tag = NULL) {
   if(!any(account.name == known.accounts$account.name & computer.name == known.accounts$computer.name)) {
     stop("Unable to localize: unknown computer/account")
   }
-
+  
   ## Load parameter files located on target machines
   ## These files must be saved as CSV, with first row as {Field.Name, Field.Type, Field.Value}
   ## Fields that contain filenames should be of the format "C:/EXAMPLE.csv" to refer to an absolute path or "./EXAMPLE.csv" for a path relative to the parameter file
@@ -25,7 +25,7 @@ localize <- function(tag = NULL) {
   parameter.files = rbind(
     data.frame(computer.name = "DESKTOP-12K9V71", account.name = "LEIGHD", file.name = "Parameters.csv", file.path = "C:/Users/leighd/Documents/David Sabbatical/R Projects")
   )
- 
+  
   load.parameter.files = function(locs) {
     ## Function to read the CSV files
     
@@ -111,4 +111,10 @@ load_package <- function(pkg, github.repos = NULL) {
   ## Stop the process if not successful
   if(!result) stop(paste("'", pkg, "' package not installed correctly", sep = ""))
   
+}
+
+worksuite_execute <- function(file
+                              ,log.title = "ad hoc"
+                              ,script.events = NULL) {
+  browser()
 }
