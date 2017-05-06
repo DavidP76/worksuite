@@ -114,7 +114,30 @@ load_package <- function(pkg, github.repos = NULL) {
 }
 
 worksuite_execute <- function(file
+                              ,log = NULL
                               ,log.title = "ad hoc"
-                              ,script.events = NULL) {
-  browser()
+                              ,log.folder = localize(tag = "Logs Folder")[[1]]
+                              ,script.events = NULL
+                              ,my.wd = NULL) {
+  
+  ## Execute the given file of R code with logging and error handling
+  
+  file = normalizePath(file, winslash = "/")
+  
+  ## Construct working directory
+  if(length(my.wd) == 0) my.wd = getwd()
+  else my.wd = c(getwd(), my.wd)
+  
+  ## Determine the appropriate working directory folder
+  ## Establish error handler
+  ## Establish logger
+  
+  ## Execute code
+  source(file)
+  
+  ## Evaluate success
+  
+  setwd(my.wd[1])
+  my.wd = my.wd[-1]
+  
 }

@@ -65,3 +65,21 @@ clean_values = function(x                           # target input
 
   result
 }
+
+norm_path = function(x) {
+  if(x == "") x = "."
+  result = tryCatch(normalizePath(x, winslash = "/")
+                    ,warning = function(w) {
+                      file.name = strsplit(x, split = c("/", "\\"), fixed = TRUE)[[1]]
+                      file.name = file.name[length(file.name)]
+                      
+                      if(length(w$message) == 1 & grep("The system cannot find the file specified", w$message) == 1) {
+                        stop(paste("Cannot find path for '"
+                                   ,file.name
+                                   ,"'"
+                                   ,sep = "")
+                             ,call. = FALSE)
+                      } else { browser() }
+                    })
+  return(result)  
+}
