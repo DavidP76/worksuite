@@ -40,7 +40,7 @@ localize <- function(tag = NULL) {
       
       if(!file.exists(paste(file.path, file.name, sep = "/"))) {
         file.path.name = strsplit(file.path, split = "/")[[1]]
-        file.path.name = file.path.name[lenth(file.path.name)]
+        file.path.name = file.path.name[length(file.path.name)]
         stop(paste("File '", file.name, "' required in folder '", file.path.name, "'", sep = ""))
       }
       
