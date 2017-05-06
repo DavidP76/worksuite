@@ -23,7 +23,7 @@ localize <- function(tag = NULL) {
   ## Fields that contain filenames should be of the format "C:/EXAMPLE.csv" to refer to an absolute path or "./EXAMPLE.csv" for a path relative to the parameter file
   
   parameter.files = rbind(
-    data.frame(computer.name = "DESKTOP-12K9V71", account.name = "LEIGHD", file.name = "Parameters.csv", file.path = "C:\Users\leighd\Documents\David Sabbatical\R Projects")
+    data.frame(computer.name = "DESKTOP-12K9V71", account.name = "LEIGHD", file.name = "Parameters.csv", file.path = "C:/Users/leighd/Documents/David Sabbatical/R Projects")
   )
  
   load.parameter.files = function(locs) {
