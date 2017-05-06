@@ -27,7 +27,20 @@ localize <- function(tag = NULL) {
   )
  
   load.parameter.files = function(locs) {
-    browser()
+    ## Function to read the CSV files
+    
+    result = list()
+    
+    ## Input locs can be nonexistant for this computer
+    if(nrow(locs) == 0) { return(result) }
+    
+    for(i in seq(nrow(locs))) {
+      file.name = clean_values(locs[i, "file.name"])
+      file.path = clean_values(locs[i, "file.path"])
+      
+      browser()
+    }
+    
   } 
   
   results = load.parameter.files(parameter.files[parameter.files$computer.name == computer.name

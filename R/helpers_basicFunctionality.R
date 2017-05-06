@@ -12,7 +12,7 @@ clean_values = function(x                           # target input
   result = x
 
   ## Check to ensure input is a known type
-  stopifnot(input.class %in% c("character", "vector", "table"))
+  stopifnot(input.class %in% c("character", "factor", "table"))
 
   if(input.class == "character") {
     ## toClass - by default: keep as character
@@ -27,6 +27,15 @@ clean_values = function(x                           # target input
     if(toClass == "numeric") result = as.numeric(result)
   }
 
+  if(input.class == "factor") {
+    ## toClass - by default: convert to character
+    if(is.null(toClass)) toClass = "character"
+    stopifnot(toClass %in% c("factor", "character", "integer"))
+    
+    if(toClass == "character") result = as.character(result)
+    if(toClass == "integer") result = as.numeric(result)
+  }
+  
   else if(input.class == "table") {
     ## toClass - by default: convert to freq table
     if(is.null(toClass)) toClass = "data.frame"
