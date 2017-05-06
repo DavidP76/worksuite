@@ -27,7 +27,7 @@ clean_values = function(x                           # target input
     if(toClass == "numeric") result = as.numeric(result)
   }
 
-  if(input.class == "factor") {
+  else if(input.class == "factor") {
     ## toClass - by default: convert to character
     if(is.null(toClass)) toClass = "character"
     stopifnot(toClass %in% c("factor", "character", "integer"))
