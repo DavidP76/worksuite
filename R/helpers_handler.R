@@ -19,7 +19,7 @@ localize <- function(tag = NULL) {
   }
 
   ## Load parameter files located on target machines
-  ## These files must be saved as CSV, with first row as {Field Name, Field Tyoe, Field Value}
+  ## These files must be saved as CSV, with first row as {Field Name, Field Type, Field Value}
   ## Fields that contain filenames should be of the format "C:/EXAMPLE.csv" to refer to an absolute path or "./EXAMPLE.csv" for a path relative to the parameter file
   
   parameter.files = rbind(
@@ -45,6 +45,12 @@ localize <- function(tag = NULL) {
       }
       
       browser()
+      
+      x = read.csv(paste(file.path, file.name, sep = "/")
+                   ,header = TRUE
+                   ,row.names = NULL
+                   ,stringsAsFactors = FALSE)
+      
     }
     
   } 
