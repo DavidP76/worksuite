@@ -38,6 +38,12 @@ localize <- function(tag = NULL) {
       file.name = clean_values(locs[i, "file.name"])
       file.path = clean_values(locs[i, "file.path"])
       
+      if(!file.exists(paste(file.path, file.name, sep = "/"))) {
+        file.path.name = strsplit(file.path, split = "/")[[1]]
+        file.path.name = file.path.name[lenth(file.path.name)]
+        stop(paste("File '", file.name, "' required in folder '", file.path.name, "'", sep = ""))
+      }
+      
       browser()
     }
     
