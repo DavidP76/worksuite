@@ -62,18 +62,27 @@ localize <- function(tag = NULL) {
           result.i[[x[j, "Field.Name"]]] = clean_values(x[j, "Field.Value"], toClass = x[j, "Field.Type"])
         }
         
+        if(any(names(result.i) %in% names(result))) { stop("Duplicated parameters found") }
+        result = c(result, result.i)
       }
-      
-      browser()
-      
     }
     
+    return(result)
   } 
   
   results = load.parameter.files(parameter.files[parameter.files$computer.name == computer.name
                                                  & parameter.files$account.name == account.name,])
   
-  browser()
+  if(!is.null(tag)) {
+    missing.tags = setdiff(tag, names(results))
+    if(length(missing.tags) > 0) stop(paste("Missing tag "
+                                            ,paste("'", missing.tags, "'", sep = "", collapse = ",")
+                                            ," from parameters file"
+                                            ,sep = ""))
+    results = results[tag]
+  }
+  
+  return(results)
 }
 
 load_package <- function(pkg, github.repos = NULL) {
