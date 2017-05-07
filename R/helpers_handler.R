@@ -115,29 +115,42 @@ load_package <- function(pkg, github.repos = NULL) {
 
 worksuite_execute <- function(file
                               ,folder = NULL
-                              ,log = NULL
                               ,log.title = "ad hoc"
                               ,log.folder = localize(tag = "Logs Folder")[[1]]
                               ,script.events = NULL
                               ,my.wd = NULL) {
-  
   ## Execute the given file of R code with logging and error handling
   
-  if(!is.null(folder)) { file = paste(folder, file, sep = "/") }
-  file = normalizePath(file, winslash = "/")
   
   ## Construct working directory
   if(length(my.wd) == 0) my.wd = getwd()
   else my.wd = c(getwd(), my.wd)
   
   ## Determine the appropriate working directory folder
+  log.folder = norm_path(log.folder)
+  ## Check to see if the intended directory folder exists
+  log.folder.dest = paste(log.folder
+                          ,paste(format.Date(Sys.time(), "%Y-%m-%d")
+                                 ,tolower(log.title)
+                                 ,sep = " ")
+                          ,sep = "/")
+  if(dir.exists(log.folder.dest)) {
+    ## Rename the previous folder in this location
+  }
+  ## Test to see if there are already multiple folders for the day
+  
+  browser()
+  
   ## Establish error handler
   ## Establish logger
   
   ## Execute code
+  if(!is.null(folder)) { file = paste(folder, file, sep = "/") }
+  file = normalizePath(file, winslash = "/")
   source(file)
   
   ## Evaluate success
+  ## Conclude the logger
   
   setwd(my.wd[1])
   my.wd = my.wd[-1]
