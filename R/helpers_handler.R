@@ -114,6 +114,7 @@ load_package <- function(pkg, github.repos = NULL) {
 }
 
 worksuite_execute <- function(file
+                              ,folder = NULL
                               ,log = NULL
                               ,log.title = "ad hoc"
                               ,log.folder = localize(tag = "Logs Folder")[[1]]
@@ -122,6 +123,7 @@ worksuite_execute <- function(file
   
   ## Execute the given file of R code with logging and error handling
   
+  if(!is.null(folder)) { file = paste(folder, file, sep = "/") }
   file = normalizePath(file, winslash = "/")
   
   ## Construct working directory
