@@ -139,7 +139,9 @@ worksuite_execute <- function(file
   }
   ## Test to see if there are already multiple folders for the day
   
-  browser()
+  dir.create(log.folder.dest)
+  my.wd = c(log.folder.dest, my.wd)
+  setwd(log.folder.dest)
   
   ## Establish error handler
   ## Establish logger
@@ -152,7 +154,7 @@ worksuite_execute <- function(file
   ## Evaluate success
   ## Conclude the logger
   
-  setwd(my.wd[1])
+  setwd(my.wd[2])
   my.wd = my.wd[-1]
   
 }
