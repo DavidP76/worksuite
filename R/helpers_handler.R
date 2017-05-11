@@ -139,10 +139,10 @@ worksuite_execute <- function(file
     ## Rename the previous folder in this location
     prev.folder.ctime = file.info(log.folder.dest)$ctime
     if(is.na(prev.folder.ctime)) { prev.folder.ctime = "00:00:00" }
-    else { prev.folder.ctime = format(prev.folder.ctime, "%H:%M:%S") }
+    else { prev.folder.ctime = format(prev.folder.ctime, "%H-%M-%S") }
     file.rename(from = log.folder.dest
                 ,to = paste(log.folder.dest, " (", prev.folder.ctime, ")", sep = ""))
-    log.folder.dest = paste(log.folder.dest, " (", format(start.time, "%H:%M:%S"), ")", sep = "")
+    log.folder.dest = paste(log.folder.dest, " (", format(start.time, "%H-%M-%S"), ")", sep = "")
   }
   ## Test to see if there are already multiple folders for the day
   
