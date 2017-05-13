@@ -11,10 +11,12 @@ worksuite_execute <- function(file
   ## Construct working directory
   if(length(my.wd) == 0) my.wd = getwd()
   else my.wd = c(getwd(), my.wd)
+  
   browser()
+  
   ## Determine the appropriate working directory folder
   my.wd = get_output_folder(log.title, log.folder, start.time)
-  
+  browser()
   ## Establish error handler
   ## Establish logger
   
