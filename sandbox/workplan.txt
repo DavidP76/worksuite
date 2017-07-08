@@ -1,4 +1,4 @@
-# Worksuite Workplan ------------------------------------------------------
+# Worksuite Plan ----------------------------------------------------------
 
   "handler_SCRIPT.R" is called by the top user
       001 Installs the latest version of the worksuite package
@@ -7,8 +7,20 @@
       
       004 Calls worksuite_execute() for the analytics script
           00A Creates the folder to be used for logging and saving outputs
+              - Determines the name of new folder
+              - Modifies the name of existing folders
+              - Creates the new folder and sets as working directory
+              
+          00B Construct an error handler that, in the case of an error, saves the objects in the environment and dumps the logger
+          00C Initialize the logger
+          00D Retroactively log events that were passed to the worksuite_execute() file
           
-          ??? If specified, saves outputs to the "working folder"
+          00E Execute the analytics script
+              - As needed, call logging function and saving function
+              - As specified, save items to the working directory or the "working folder"
+          
+          00F Close the logger
+          00G worksuite_execute() is closed
           
       005 "handler_Script.R" is closed
 
