@@ -1,0 +1,19 @@
+# Worksuite Workplan ------------------------------------------------------
+
+  "handler_SCRIPT.R" is called by the top user
+      001 Installs the latest version of the worksuite package
+      002 Starts to capture log events to be logged retroactively
+      003 Captures basic information around the analytics script to be run
+      
+      004 Calls worksuite_execute() for the analytics script
+          00A Creates the folder to be used for logging and saving outputs
+          
+          ??? If specified, saves outputs to the "working folder"
+          
+      005 "handler_Script.R" is closed
+
+# Wish List ---------------------------------------------------------------
+
+  - Run recursive worksuite_execute() within another worksuite_execute()
+      * Creates nested folder and returns to the parent folder when complete
+      * Logger can optionally be nested or added to parent logger
