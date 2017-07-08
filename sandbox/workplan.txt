@@ -29,3 +29,5 @@
   - Run recursive worksuite_execute() within another worksuite_execute()
       * Creates nested folder and returns to the parent folder when complete
       * Logger can optionally be nested or added to parent logger
+      
+  - Update folder with success/failure
