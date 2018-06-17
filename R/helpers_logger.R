@@ -1,5 +1,6 @@
 ## helpers_logger.R
 ## Scripts for handling challenges around logging results
+## Test line
 
 get_output_folder = function(log.title, log.folder, start.time) {
   ## Create the appropriate new folder to log actions, and set as the working directory
