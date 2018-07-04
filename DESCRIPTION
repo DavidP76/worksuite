@@ -1,7 +1,7 @@
 Package: worksuite
 Type: Package
 Title: DP Worksuite
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person("David", "Phillips", email = "davidephillips11@gmail.com", role = c("aut", "cre"))
 Description: Set of tools to facilitate repeated business intelligence processes.
     Focus is on process logging, data management/cleaning, and output generation
