@@ -1,4 +1,6 @@
-execute <- function(expr = NULL, script = NULL) {
+execute <- function(expr = NULL, script = NULL
+                    ,logger.settings = list(log = TRUE
+                                            ,path.home = ".")) {
   
   ## check for valid expression or script to execute
   if(missing(expr) && missing(script)) stop("Execute requires a single 'expr' or 'script' argument")
@@ -37,6 +39,8 @@ execute <- function(expr = NULL, script = NULL) {
             ,"\n"
             ,sep = ""))
 
+  initial.wd <- getwd()
+  
   ## Execute the given script
   if(execute.class == "script") {
     result <- FALSE
@@ -48,6 +52,8 @@ execute <- function(expr = NULL, script = NULL) {
   if(execute.class == "expr") {
     result <- eval(expr)
   }
+  
+  setwd(initial.wd)
   
   cat("\n")
   
